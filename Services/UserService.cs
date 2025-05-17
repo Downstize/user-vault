@@ -38,8 +38,6 @@ public class UserService : IUserService
         var exists = await _db.Users.AnyAsync(u => u.Login == dto.Login);
         if (exists) return null;
 
-        var creator = await _db.Users.FirstOrDefaultAsync(u => u.Login == createdBy);
-
         var user = new User
         {
             Login = dto.Login,
